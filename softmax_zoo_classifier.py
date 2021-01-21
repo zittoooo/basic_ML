@@ -52,19 +52,16 @@ history = tf.model.fit(x_data, y_one_hot, epochs=1000)
 
 # Single data test
 test_data = np.array([[0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0]]) # expected prediction == 3 (feathers)
-print(tf.model.predict(test_data), tf.model.predict_classes(test_data))
+print(tf.model.predict(test_data), (tf.model.predict(test_data) > 0.5).astype("int32"))
 '''
-[[8.7891385e-04 1.3614377e-03 7.1630953e-03 9.8524934e-01 4.0065190e-03
-  6.3265378e-07 1.3401081e-03]] [[8.7891385e-04 1.3614377e-03 7.1630953e-03 9.8524934e-01 4.0065190e-03
-  6.3265378e-07 1.3401081e-03]]
+[[7.1100850e-04 1.1088925e-03 6.8191099e-03 9.8704439e-01 3.3308093e-03
+  3.6191017e-07 9.8549761e-04]] [[0 0 0 1 0 0 0]]
 '''
-
 
 # Full x_data test
 pred = (tf.model.predict(x_data) > 0.5).astype("int32")
 for p, y in zip(pred, y_data.flatten()):
     print("[{}] Prediction: {} True Y: {}".format(p == int(y), p, int(y)))
-
 
 '''
 [[False  True  True  True  True  True  True]] Prediction: [1 0 0 0 0 0 0] True Y: 0
