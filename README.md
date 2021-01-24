@@ -6,7 +6,7 @@
 ### 09-4-xor_tensorboard.py
 
 텐서보드를 colab에서 바로 로드 하기  \
-텐서보드 extension 로드를 위한 magic command \
+텐서보드 extension 로드를 위한 magic command
 ```
 %load_ext tensorboard
 
